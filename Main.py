@@ -1,5 +1,14 @@
 from Player import Player
 
+
+# BOWLING SCORING SYSTEM
+# LANGUAGE : PYTHON
+
+# MEMBERS : 1) MUHAMMAD AMIRUL SYAFIQ BIN MOHD NOR (2020620108)
+#           2) IMAN HAFIZI BIN MD ZIN (2020494344)
+#           3) VINIT ROY A/L LETCHUMANAN (2020812022)
+ 
+
 # User Defined Function
 # Get user input to fill points received by the players.
 def fill_points():
@@ -7,7 +16,7 @@ def fill_points():
     frames = 10
 
     for i in range(frames):
-        print(f'Frame {i + 1} - ')
+        print(f'FRAME {i + 1} - ')
         col = []
 
         first_throw = 0
@@ -56,17 +65,28 @@ def fill_points():
         points.append(col)
     return points
 
-count = input("Enter number of players: ")
+#Programs Starts Here
+count = input("Please Enter The Number of Contestant: ")
 players = []
 
 for i in range(int(count)):
     print(f'\nPlayer {i + 1}')
-    name = input("Insert Name: ")
+    name = input("Enter Your Name: ")
     points = fill_points()
 
     players.append(Player(name, points))
 
 for i in range(len(players)):
-    print(f'\nPlayer {i + 1}: {players[i].name}')
-    print(f'Points: {players[i].points}')
+    print(f'\n{i + 1}: {players[i].name}')
+    print(f'Scoreboard:- \n{players[i].printPoints()}')
     print(f'Total Points: {players[i].calc_totalPoint()}')
+
+maxNum = 0
+maxName = None
+
+for i in range(len(players)):
+    if players[i].calc_totalPoint() > maxNum:
+        maxNum = players[i].calc_totalPoint()
+        maxName = players[i].name
+
+print(f'The Winner Is: {maxName} With {maxNum} Points')

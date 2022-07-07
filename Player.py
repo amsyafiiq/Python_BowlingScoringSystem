@@ -2,7 +2,92 @@ class Player:
     def __init__(self, name, points):
         self.name = name
         self.points = points
+    
+    def printPoints(self):
+        output = "_"
+        for i in range(len(self.points)):
+            rows = self.points[i]
+            if len(rows) == 3:
+                output += "____________"
+            else:
+                output += "________"
         
+        output += "\n|"
+        
+        for i in range(len(self.points)):
+            rows = self.points[i]
+            if len(rows) == 3:
+                output += "    {0}     |".format(i + 1)
+            else:
+                output += "   {0}   |".format(i + 1)
+        
+        output += "\n|"
+
+        for i in range(len(self.points)):
+                rows = self.points[i]
+                if len(rows) == 3:
+                    output += "-----------|"
+                else:
+                    output += "-------|"
+                    
+        output += "\n|"
+
+        for i in range(len(self.points)):
+            rows = self.points[i]
+            if len(rows) == 1:
+                output +=  " {} | {} |".format("X", " ")
+            elif (len(rows) == 2):
+                if rows[0] + rows[1] == 10:
+                     output += " {} | {} |".format(rows[0], "/")
+                else:
+                    value = [-1] * 2
+                    for j in range(len(rows)):
+                        if rows[j] == 0:
+                            value[j] = "-"
+                        else:
+                            value[j] = rows[j]
+                    output += " {} | {} |".format(value[0], value[1])
+            else:
+                value = [-1] *3
+                for j in range(len(rows)):
+                    if rows[j] == 10:
+                        value[j] = "X"
+                    elif rows[j] == 0:
+                        value[j] = "-"
+                    else:
+                        value[j] = ""
+
+                if value[0] == "":
+                    value[0] = rows[0]
+                
+                if value[1] == "":
+                    if rows[1] + rows[1] == 10:
+                        value[1] = "/"
+                    else:
+                        value[1] = rows[1]
+                
+                if value[2] == "":
+                    if rows[1] + rows[2] == 10:
+                        value[2] = "/"
+                    else:
+                        value[2] = rows[2]
+                
+                output += " {} | {} | {} |".format(value[0], value[1], value[2])
+            
+            
+        output += "\n-"
+        for i in range(len(self.points)):
+                rows = self.points[i]
+                if len(rows) == 3:
+                    output += "------------"
+                else:
+                    output += "--------"
+
+
+        return output
+
+        
+
     def calc_totalPoint(self):
         total = 0
 
