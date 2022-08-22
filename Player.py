@@ -48,7 +48,7 @@ class Player:
                             value[j] = rows[j]
                     output += " {} | {} |".format(value[0], value[1])
             else:
-                value = [-1] *3
+                value = [-1] * 3
                 for j in range(len(rows)):
                     if rows[j] == 10:
                         value[j] = "X"

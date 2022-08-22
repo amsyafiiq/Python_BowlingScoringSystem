@@ -65,6 +65,7 @@ def fill_points():
         points.append(col)
     return points
 
+
 #Programs Starts Here
 count = input("Please Enter The Number of Contestant: ")
 players = []
